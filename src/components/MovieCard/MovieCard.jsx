@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import apiConfig from '../../config/apiConfig';
-import './movieCard.scss'
+import './movie_card.scss'
 
 function MovieCard({movie}) {
     return (
