@@ -1,4 +1,4 @@
-.top_slide {
+.banner {
     position: relative;
     height: 60vh;
     color: white;
@@ -11,7 +11,7 @@
     padding: 100px 50px 10px 50px;
 }
 
-.top_slide_content{
+.banner_content{
     max-width: 700px;
     padding-top: 4vh;
     position: initial;
@@ -22,13 +22,13 @@
 }
 
 
-.top_slide_buttons{
+.banner_buttons{
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
 
-.top_slide_button{
+.banner_button{
     background: rgb(54, 54, 54);
     color: white;
     font-size: 1rem;
@@ -38,14 +38,14 @@
     padding: 0.5rem 2rem;
     cursor: pointer;
 }
-.top_slide_button:hover{
+.banner_button:hover{
     background: white;
     color: black;
     transition: all 0.3s;
 }
 .poster img {
-    max-width: 300px;
-    max-height: 60vh;
+    max-width: 500px;
+    height: 50vh;
     box-shadow: 1px 1px 42px black;
     border-radius: 10px;
     position: relative;
@@ -56,7 +56,7 @@
       display: none;
     }
   }
-.top_slide_fadeout{
+.banner_fadeout{
     /* background: liner-gradient */
     height: 100px;
     width: 100%;
@@ -65,7 +65,7 @@
     left: 0;
 }
 
-.top_slide_overlay{
+.banner_overlay{
     position: absolute;
     height: 100%;
     width: 100%;
@@ -74,7 +74,7 @@
     background-color: rgba(0, 0, 0, 0.75);
 }
 
-.hero-slide__item{
+.banner_wrapper{
     background-size: cover;
     background-position: center center;
     .active{
