@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchBar from '../SearchBar/SearchBar'
 import TopSlider from '../TopSlider/TopSlider'
+import MoviesList from '../MovieList/MoviesList'
 
 function Home() {
     return (
@@ -9,7 +10,7 @@ function Home() {
 
             <SearchBar/>
 
-            <MovieList/>
+            <MoviesList title="Movies"/>
 
         </div>
     )
