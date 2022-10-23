@@ -1,0 +1,22 @@
+.nav_wrapper{
+    display: flex;  
+    height: 80px;
+    position: fixed;
+    z-index: 10;
+    width: 100%; /*adjusting the padding*/
+    transition: 0.6s;    
+}
+.nav_content{
+    display: flex;
+    justify-content: space-between ;
+}
+.nav_black{
+    background-color: black;
+}
+
+.nav_logo img{
+    max-width: 170px;
+}
+.nav_avatar img{
+    max-width: 70px;
+}
