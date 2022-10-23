@@ -1,0 +1,17 @@
+.movie_card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all .2s ease-in-out;
+    flex: 1;
+    text-align: center;
+    width: 320px;
+    &:hover{
+        transform: scale(1.1);
+    }
+    .movie_thumbnail{
+        img{
+            width:300px
+        }
+    }
+}
