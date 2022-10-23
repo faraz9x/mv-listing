@@ -1,8 +1,8 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
-import MovieList from './components/MovieList/MovieList';
+// import MovieList from './components/MovieList/MoviesList';
 import MovieDetail from './components/MovieDetail/MovieDetail';
 import ErrorScreen from './components/Error/Error';
 
@@ -13,14 +13,14 @@ function App() {
         <header className="App-header">
             <Navbar/>
         </header>
-        <div className="container">
+        {/* <div className="container"> */}
         <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/movies" component={MovieList} />
+            {/* <Route path="/movies" component={MovieList} /> */}
             <Route path="/movie/:id" component={MovieDetail} />
             <Route component={ErrorScreen} />
           </Switch>
-        </div>
+        {/* </div> */}
       </Router>
     </div>
   );
