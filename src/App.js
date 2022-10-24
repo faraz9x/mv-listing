@@ -6,15 +6,17 @@ import Home from './components/Home/Home';
 import MovieDetail from './components/MovieDetail/MovieDetail';
 import ErrorScreen from './components/Error/Error';
 import Chart from "./components/Stats/Stats";
+import ScrollToTop from './ScrollTop'
 
 function App() {
   return (
     <div className="App">
       <Router>
+      {/* <div className="container"> */}
+      <ScrollToTop/>
         <header className="App-header">
             <Navbar/>
         </header>
-        {/* <div className="container"> */}
         <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/movie/:id" component={MovieDetail} />
