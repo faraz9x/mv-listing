@@ -47,8 +47,8 @@ const Chart = ({chartData}) => {
 
 		// console.log(dimensions.width, dimensions.height)
 
-		const chartwidth = parseInt(d3.select('.d3demo').style('width')) - margin.left - margin.right
-		const chartheight = parseInt(d3.select('.d3demo').style('height')) - margin.top - margin.bottom
+		const chartwidth = parseInt(d3.select('.d3Container').style('width')) - margin.left - margin.right
+		const chartheight = parseInt(d3.select('.d3Container').style('height')) - margin.top - margin.bottom
 
         console.log({chartwidth,chartheight});
 
@@ -118,7 +118,7 @@ const Chart = ({chartData}) => {
         .text("Movies");
 	}
     return (
-            <div class='d3demo'>
+            <div class='d3Container'>
                 <svg ref={d3Chart}></svg>
             </div>
     )
