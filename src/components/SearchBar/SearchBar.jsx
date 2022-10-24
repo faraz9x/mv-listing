@@ -28,13 +28,12 @@ function SearchBar() {
     return (
         <div className="container">
             <div class="centerbox">
-                <h1> {movieFetchStatus}</h1>
                 {/* <form id="" className="" method="post" style={{position:"relative"}}> */}
                     <div class="main-form-container">
                         <input type="text" className="main-input main-name" placeholder="Search by movie title"
                                 value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
                         {/* <div className="form-actions"> */}
-                            <button type="button" className="main-btn" onClick={toggleDropDown}>
+                            {/* <button type="button" className="main-btn" onClick={toggleDropDown}>
                                 <p className="search-small">Sort By</p>
                                 <p className="search-large">Default</p>
                                 {showDropdown &&
@@ -42,7 +41,7 @@ function SearchBar() {
                                         <li onClick={applySort}>Release Date</li>
                                         <li onClick={applySort}>Popularity</li>
                                     </ul>)}
-                            </button>
+                            </button> */}
                             <input type="button" id="main-submit" onClick={triggerSearch} value={movieFetchStatus==1?'Searching':'Search'} />
                         {/* </div>                      */}
                         

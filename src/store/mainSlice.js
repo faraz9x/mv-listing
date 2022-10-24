@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axiosInstance from '../config/axiosInstance';
+import GenreMapper from "../config/genre";
 import requests from "../config/requests";
 
 export const getAsyncMovies = createAsyncThunk('movies/getAsyncMovies',
@@ -10,22 +11,38 @@ export const getAsyncMovies = createAsyncThunk('movies/getAsyncMovies',
         } else {
              request = await axiosInstance.get(`${requests.searchByText}&query=${searchText}`);
         }
+        const data =  request.data.results;
+        data.map((d) => {
+          if(d.genre_ids){
+            d.genres = GenreMapper(d.genre_ids);
+          }
+        });       
         
-        return request.data.results;
+        return data;
 })
 export const getAsyncTrendingMovies = createAsyncThunk('movies/getTopMovies',
     async() => {
         const request = await axiosInstance.get(requests.getTrending);
-        
-        return request.data.results;
+        const data =  request.data.results;
+
+        data.map((d) => {
+          if(d.genre_ids){
+            d.genres = GenreMapper(d.genre_ids);
+          }
+        });     
+          
+        return data;
 })
 
 export const getAsyncMovieDetail = createAsyncThunk('movies/getAsyncMovieDetail',
     async(id) => {
-        alert();
+        
         const request = await axiosInstance.get(`movie/${id}?${requests.getMovieDetail}`);
-                
-        return request.data;
+        const data = request.data;
+        if(data.genre_ids){
+          data.genres = GenreMapper(data.genre_ids);
+        }
+        return data;
 });
 
 const mainSlice = createSlice({

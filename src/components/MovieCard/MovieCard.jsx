@@ -8,7 +8,12 @@ function MovieCard({movie}) {
         <Link to={`/movie/${movie.id}`}>
             <div className="movie_card">
                 <div className="movie_thumbnail">
-                    <img src={apiConfig.imgBaseSmall+movie.poster_path} alt=""/>
+                    {(movie.poster_path) &&
+                        <img src={apiConfig.imgBaseSmall+movie.poster_path} alt=""/>
+                    }
+                    {(!movie.poster_path) &&
+                        <img src="https://i.imgur.com/Z2MYNbj.png" alt=""/>
+                    }
                 </div>
 
                 <div className="movie_info">
