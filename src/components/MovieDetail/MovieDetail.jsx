@@ -6,17 +6,23 @@ import apiConfig from '../../config/apiConfig';
 import { getAsyncMovieDetail,getMovieDetail, clearMovieDetail} from '../../store/mainSlice';
 import MovieBanner from '../MovieBanner/MovieBanner';
 import './movie_detail.scss'
+import StarRating from './StarRating';
 function MovieDetail() {
-    const { id } = useParams();
-    const dispatch = useDispatch();
+
     const {imgBase,imgBaseSmall}= apiConfig;
+    
+    const { id } = useParams();
+
+    const dispatch = useDispatch();
     const movie = useSelector(getMovieDetail);
+
     useEffect(() => {
         dispatch(getAsyncMovieDetail(id));
         return () => {
           dispatch(clearMovieDetail())
         };
       }, [dispatch, id]);
+
 
     function truncateString(_string,_length) {
         return _string?.length > _length ? _string.substr(0, _length-1) + '...': _string
@@ -49,7 +55,13 @@ function MovieDetail() {
                     })
                   }
                   
-                </div>          
+                </div>     
+
+                <div className="rate_movie">
+                    {(movie?.id) &&
+                    <StarRating movieid={movie?.id}/>
+                    }
+                </div>     
               </div>
 
               <div className="numbers">
@@ -75,6 +87,8 @@ function MovieDetail() {
                     <small>Language </small>
                     <span>{movie?.original_language}</span>
                   </div>
+
+                  
               </div>
             </div>
             </div>
