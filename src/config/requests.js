@@ -9,6 +9,8 @@ const requests = {
     getMovies: "/discover/movie/?with_watch_monetization_types=flatrate&include_adult=false&certification_country=US&certification.lte=PG-13&" + requestSuffix,
     // https://api.themoviedb.org/3/ discover/movie?include_adult=false&page=1&with_watch_monetization_types=flatrate
     getMovieDetail:"append_to_response=videos,images,credits&"+ requestSuffix, //the first part is set from middleware
+    guestSession: "authentication/guest_session/new?"+ requestSuffix,
+    submitRating: requestSuffix
     
 }
 

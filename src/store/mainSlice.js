@@ -20,9 +20,23 @@ export const getAsyncMovies = createAsyncThunk('movies/getAsyncMovies',
         
         return data;
 })
-export const getAsyncTrendingMovies = createAsyncThunk('movies/getTopMovies',
+export const getAsyncTrendingMovies = createAsyncThunk('movies/getTrendingMovies',
     async() => {
         const request = await axiosInstance.get(requests.getTrending);
+        const data =  request.data.results;
+
+        data.map((d) => {
+          if(d.genre_ids){
+            d.genres = GenreMapper(d.genre_ids);
+          }
+        });     
+          
+        return data;
+})
+
+export const getAsyncTopMovies = createAsyncThunk('movies/getTopMovies',
+    async() => {
+        const request = await axiosInstance.get(requests.getTopRated);
         const data =  request.data.results;
 
         data.map((d) => {
@@ -45,6 +59,38 @@ export const getAsyncMovieDetail = createAsyncThunk('movies/getAsyncMovieDetail'
         return data;
 });
 
+
+export const createGuestSession = createAsyncThunk('movies/createGuestSession',
+    async(arg, { getState }) => {
+        const state = getState();
+        console.log("Checking", state.mainSlice.guestSession);
+        if(typeof state.mainSlice.guestSession === 'object')
+            return await setTimeout(() => {
+              return state.guestSession;
+            }, 200);
+
+        const request = await axiosInstance.get(requests.guestSession);
+        
+        return request.data;
+});
+
+export const submitRating = createAsyncThunk('movies/submitRating',
+    async({id,stars}) => {
+        const gid = "b1e7f8840437d9dc5caaa4e850a2fa95";
+        const request = await axiosInstance.post(`movie/${id}/rating?guest_session_id=${gid}&${requests.submitRating}`,
+                                                  { "value": stars } );
+        const data = request.data;
+
+        if(data.success){
+          const rm = JSON.parse(localStorage.getItem("ratedMovies")||"[]");
+          rm.push({id,stars});
+          localStorage.setItem("ratedMovies",JSON.stringify(rm));
+          console.log("local",localStorage.getItem("ratedMovies"));
+        }
+        
+        return {id,stars};
+});
+
 const mainSlice = createSlice({
     name: 'mainSlice',
     initialState:{
@@ -54,11 +100,21 @@ const mainSlice = createSlice({
         trendingFetchStatus:0,
         topMovies:[],
         movieDetail:null,
+        guestSession:false,
+        ratedMovie:false,
+
     },
     reducers:{
         clearMovieDetail: (state) => {
             state.movieDetail = {};
         },
+        addRatedMovie: (state, action)=>{
+          console.log("ADDING RATED MOVIE");
+          state.ratedMovie = action;
+        },
+        removeRatedCache: (state)=>{
+          state.ratedMovie = false;
+        }
     },
     extraReducers:{
         [getAsyncMovies.pending]:(state) => {
@@ -85,7 +141,11 @@ const mainSlice = createSlice({
         [getAsyncTrendingMovies.rejected]: (state) => {
           return { ...state, trendingFetchStatus:3 };
         },
+        
 
+        [getAsyncTopMovies.fulfilled]: (state, { payload }) => {
+          return { ...state, topMovies: payload,trendingFetchStatus:2 };
+        },
 
         [getAsyncMovieDetail.pending]: (state) => {
           return { ...state, detailFetchStatus:1 };
@@ -97,6 +157,14 @@ const mainSlice = createSlice({
           return { ...state, detailFetchStatus:3 };
         },
 
+        [createGuestSession.fulfilled]: (state, { payload }) => {
+          return { ...state,guestSession:payload };
+        },
+
+        [submitRating.fulfilled]: (state, { payload }) => {
+        
+          return { ...state,ratedMovie:payload };
+        },
         
     }
 })
@@ -105,7 +173,10 @@ const mainSlice = createSlice({
 export const getAllMovies = (state) => state.mainSlice.movies;
 export const getMovieDetail = (state) => state.mainSlice.movieDetail;
 export const getTrendingMovies = (state) => state.mainSlice.trendingMovies;
+export const getTopMovies = (state) => state.mainSlice.topMovies;
 export const getMovieFetchStatus = (state) => state.mainSlice.movieFetchStatus;
 export const getTrendingFetchStatus = (state) => state.mainSlice.trendingFetchStatus;
-export const { clearMovieDetail } = mainSlice.actions;
+export const getGuestSession = (state) => state.mainSlice.guestSession;
+export const getRatedMovie = (state) => state.mainSlice.ratedMovie;
+export const { clearMovieDetail,addRatedMovie, removeRatedCache } = mainSlice.actions;
 export default mainSlice;
