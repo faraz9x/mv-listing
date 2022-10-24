@@ -10,6 +10,9 @@
     justify-content: space-between;
     padding: 100px 150px 50px 150px;
     
+    @media screen and (max-width: 540px) {    
+      padding: 100px 0px 50px 20px;
+    }
     
 }
 .isDetail{

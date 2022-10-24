@@ -48,31 +48,7 @@ function MovieDetail() {
                       {truncateString(movie?.overview, 500)}
                   </p>
                 </div>
-
-                <h1 className="styled_heading">Cast</h1>
-                <div className="movie_cast">
-                  {
-                    (movie?.credits?.cast)?.slice(0,8).map((c) => {
-                      return (c.known_for_department==="Acting")&&
-                      <>
-                        <div style={{width:"200px"}}>
-                          <img src={`${imgBaseSmall}${c.profile_path}`} />
-                          <h4>{c.name}</h4>
-                        </div>
-                      </>
-                    })
-                  }
-                  
-                </div>     
-
-                <div className="rate_movie">
-                    {(movie?.id) &&
-                    <StarRating movieid={movie?.id}/>
-                    }
-                </div>     
-              </div>
-
-              <div className="numbers">
+                <div className="numbers">
                   <div className="number">
                     <small>Play time </small>
                     <span>{movie?.runtime} Mins</span>
@@ -97,9 +73,36 @@ function MovieDetail() {
 
                   
               </div>
+              
+                <h1 className="styled_heading">Cast</h1>
+                <div className="movie_cast">
+                  {
+                    (movie?.credits?.cast)?.slice(0,8).map((c) => {
+                      return (c.known_for_department==="Acting")&&
+                      <>
+                        <div style={{maxWidth:"150px"}}>
+                          <img src={`${imgBaseSmall}${c.profile_path}`} />
+                          <h4>{c.name}</h4>
+                        </div>
+                      </>
+                    })
+                  }
+                  
+                </div>     
+
+              
+              </div>
             </div>
             </div>
 
+            <div className="container">
+            <div className="rate_movie">
+                    {(movie?.id) &&
+                    <StarRating movieid={movie?.id}/>
+                    }
+            </div>     
+              
+            </div>
         </div>
     )
 }
