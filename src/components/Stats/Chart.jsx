@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import './stats.scss';
 
+//implement animation and labels
 
 
 
@@ -45,7 +46,7 @@ const Chart = ({chartData}) => {
     const margin = {top: 10, right:30, bottom: 30, left:60}
 	function DrawChart(data, dimensions){
 
-		// console.log(dimensions.width, dimensions.height)
+		
 
 		const chartwidth = parseInt(d3.select('.d3Container').style('width')) - margin.left - margin.right
 		const chartheight = parseInt(d3.select('.d3Container').style('height')) - margin.top - margin.bottom
