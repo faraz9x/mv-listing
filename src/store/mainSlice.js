@@ -7,7 +7,7 @@ export const getAsyncMovies = createAsyncThunk('movies/getAsyncMovies',
     async(searchText=false) => {
         let request = null;
         if (!searchText) {
-             request = await axiosInstance.get(requests.getMovies);
+             request = await axiosInstance.get(requests.getTrending);
         } else {
              request = await axiosInstance.get(`${requests.searchByText}&query=${searchText}`);
         }
@@ -22,7 +22,7 @@ export const getAsyncMovies = createAsyncThunk('movies/getAsyncMovies',
 })
 export const getAsyncTrendingMovies = createAsyncThunk('movies/getTrendingMovies',
     async() => {
-        const request = await axiosInstance.get(requests.getTrending);
+        const request = await axiosInstance.get(requests.getTrendingToday);
         const data =  request.data.results;
 
         data.map((d) => {
