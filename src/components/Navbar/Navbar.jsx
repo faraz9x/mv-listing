@@ -27,12 +27,16 @@ function Navbar() {
         <div className={`nav_wrapper ${show && "nav_black"}`}>
         <div className="container nav_content">
                 <div className="nav_logo">
-                    <img src="https://pbs.twimg.com/media/E4a2Tc1XMAAEcF2?format=png&name=4096x4096"/>
+                    <Link to="/">
+                        <img src="https://pbs.twimg.com/profile_images/1243623122089041920/gVZIvphd_400x400.jpg"/>
+                    </Link>
                 </div>
 
 
                 <div className="nav_avatar">
-                    <img src="https://cdn-icons-png.flaticon.com/512/168/168882.png"/>
+                    <Link to="/stats">
+                    <img src="https://cdn-icons-png.flaticon.com/512/893/893220.png"/>
+                    </Link>
                 </div>
         </div>
             
