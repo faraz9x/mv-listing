@@ -86,8 +86,7 @@ function MovieDetail() {
                     <span>
                       {
                         (movie?.credits?.crew
-                          .filter(x=> x.known_for_department==="Directing")[0]
-                          .name)
+                          .filter(x=> x.known_for_department==="Directing")[0]?.name)
                       }
                     </span>
                   </div>

@@ -64,19 +64,24 @@ export const createGuestSession = createAsyncThunk('movies/createGuestSession',
     async(arg, { getState }) => {
         const state = getState();
         console.log("Checking", state.mainSlice.guestSession);
-        if(typeof state.mainSlice.guestSession === 'object')
-            return await setTimeout(() => {
-              return state.guestSession;
-            }, 200);
-
+        if(typeof state.mainSlice.guestSession === 'object'){
+          
+            return state.mainSlice.guestSession;
+          
+        }
+        
+            
+        console.log("requesting new guest session");
         const request = await axiosInstance.get(requests.guestSession);
         
         return request.data;
 });
 
 export const submitRating = createAsyncThunk('movies/submitRating',
-    async({id,stars}) => {
-        const gid = "b1e7f8840437d9dc5caaa4e850a2fa95";
+    async({id,stars},{ getState }) => {
+        const state = getState();
+        console.log("Checking before rating", state.mainSlice.guestSession);
+        const gid = state.mainSlice.guestSession?.guest_session_id;
         const request = await axiosInstance.post(`movie/${id}/rating?guest_session_id=${gid}&${requests.submitRating}`,
                                                   { "value": stars } );
         const data = request.data;
@@ -158,6 +163,7 @@ const mainSlice = createSlice({
         },
 
         [createGuestSession.fulfilled]: (state, { payload }) => {
+          console.log("what are we setting", payload);
           return { ...state,guestSession:payload };
         },
 
