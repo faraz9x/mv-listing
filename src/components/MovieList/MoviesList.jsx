@@ -6,6 +6,7 @@ import MovieCard from '../MovieCard/MovieCard';
 import "./movie_row.scss";
 
 function MoviesList({title}) {
+    
     const dispatch = useDispatch();
     
     useEffect(() => {
