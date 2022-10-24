@@ -1,6 +1,24 @@
 # Brief
 This is a basic movie listing app consuming TMDB API and using Redux, RTK, React Router, D3 Chart and other tools useful for building React apps. 
 
+# Screens
+Home: 
+On the top it has a slider which showcases every day's trending videos.
+Then we have the main movie listing, which by default fetches current week's trending movies
+On top of movie listing theres a search component which allows user to search for their desired movie
+However, the results are limited to only first page, as pagination isnt implemented
+
+Movie Details:
+When we tap on a movie banner or card, we are taken to movie details screen.
+Movie details screen shows movie info, overview and cast as well.
+At the bottom we have the Review/Rating component through which user can submit their ratings
+Once they submit a rating, the rating button goes away and their provided ratings are persister there using local storage and store values
+
+
+Stats:
+From the top right corner, we can use the chart link to go the stats screen.
+This screen basically holds two charts, one is Top 10 Rated movies according to vote average, and other one is Top Rated movies acccording to the vote count.
+
 # What could be be added or improved
 Could improve TMDB implementation with sorting and filters,
 Could improve D3 JS implementation
@@ -21,7 +39,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+To run the project after installing dependencies, you can run:
 
 ### `npm start`
 
