@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 // import MovieList from './components/MovieList/MoviesList';
 import MovieDetail from './components/MovieDetail/MovieDetail';
 import ErrorScreen from './components/Error/Error';
+import Chart from "./components/Stats/Stats";
 
 function App() {
   return (
@@ -16,8 +17,8 @@ function App() {
         {/* <div className="container"> */}
         <Switch>
             <Route path="/" exact component={Home} />
-            {/* <Route path="/movies" component={MovieList} /> */}
             <Route path="/movie/:id" component={MovieDetail} />
+            <Route path="/stats" exact component={Chart} />
             <Route component={ErrorScreen} />
           </Switch>
         {/* </div> */}
