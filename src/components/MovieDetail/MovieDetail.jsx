@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { AiFillDollarCircle, AiOutlinePlayCircle } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import apiConfig from '../../config/apiConfig';
 import { getAsyncMovieDetail,getMovieDetail, clearMovieDetail} from '../../store/mainSlice';
+import Skeleton from '../LoadingSkeleton/Skeleton';
 import MovieBanner from '../MovieBanner/MovieBanner';
 import './movie_detail.scss'
 import StarRating from './StarRating';
@@ -29,7 +29,15 @@ function MovieDetail() {
     }
     return (
         <div>
+          {(!movie?.id) &&
+                (<>                
+                    <Skeleton _width="100%" _height="55vh"/>
+                </>)
+            }
+            {(movie?.id) &&
+            <>  
             <MovieBanner movie={movie} className="active"/>
+            </>}
             <div className="container">
             <div className="movie_detail">
 
