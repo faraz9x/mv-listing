@@ -1,0 +1,104 @@
+.banner {
+    position: relative;
+    height: 60vh;
+    color: white;
+    text-shadow: 1px 1px 1px #000, 
+               3px 3px 5px rgb(3, 3, 3); 
+    object-fit: contain;
+    
+    display: flex;
+    justify-content: space-around;
+    padding: 100px 50px 10px 50px;
+}
+
+.banner_content{
+    max-width: 700px;
+    padding-top: 4vh;
+    position: initial;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.banner_buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.banner_button{
+    background: rgb(54, 54, 54);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 0;
+    outline: 0;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+}
+.banner_button:hover{
+    background: white;
+    color: black;
+    transition: all 0.3s;
+}
+.poster img {
+    max-width: 500px;
+    height: 50vh;
+    box-shadow: 1px 1px 42px black;
+    border-radius: 10px;
+    position: relative;
+    z-index: 9;
+}
+@media (max-width: 540px) {
+    .poster {
+      display: none;
+    }
+  }
+.banner_fadeout{
+    /* background: liner-gradient */
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.banner_overlay{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.banner_wrapper{
+    background-size: cover;
+    background-position: center center;
+    animation:backAn 50s infinite;
+    .active{
+        
+        .poster {
+            position: relative;
+            z-index: 10;
+            animation: 0.6s ease-out 0s 1 slideInFromBottom;
+        }
+    }
+}
+@keyframes backAn {
+    0% {
+      background-size:100%;
+    }
+    50% {
+      background-size:150%;
+    }
+    100% {
+      background-size:75%;
+    }
+  }
+@keyframes slideInFromBottom {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}

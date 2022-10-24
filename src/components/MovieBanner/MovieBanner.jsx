@@ -1,6 +1,6 @@
 import React from 'react'
 import apiConfig from '../../config/apiConfig'
-
+import './movie_banner.scss'
 function MovieBanner({movie, className}) {
 
     const {imgBase,imgBaseSmall}= apiConfig;
@@ -17,9 +17,9 @@ function MovieBanner({movie, className}) {
         >
             <div className="container banner">
                 <div className="banner_content">
-                    <h1 className="banner_title"> {movie.title || movie.name || movie.original_name} </h1>
+                    <h1 className="banner_title"> {movie?.title || movie?.name || movie?.original_name} </h1>
                     <h2 className="banner_title">
-                        {truncateString(movie.overview, 150)}
+                        {truncateString(movie?.overview, 150)}
                     </h2>
                     <div className="banner_buttons">
                         <button className="banner_button">Play</button>
@@ -30,7 +30,7 @@ function MovieBanner({movie, className}) {
 
                 </div>
                 <div className="poster">
-                    <img src={imgBaseSmall + movie.poster_path} alt="" />
+                    <img src={imgBaseSmall + movie?.poster_path} alt="" />
                 </div>
                
             </div>
