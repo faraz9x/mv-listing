@@ -29,6 +29,7 @@ React Router v5x was used in this implementation, however we can improve it to v
 Pagination can be implemented
 Filters and Sorting where possible can be added
 
+SCSS: I used scss with this app but not to the real good effect, so we can try to implement it in its true essence
 # TMDB API limitations
 TMDB API comes with its own caveats and limitations.
 Like when we are searching, it doesnt provide any sorting or filtering options, because of that, I could not implement sorting and filters with the search implementation.
