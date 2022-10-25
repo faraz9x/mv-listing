@@ -37,9 +37,9 @@ function MoviesList({title}) {
                 }  
                 {
                 (movieFetchStatus==2) &&
-                movies.map((movie) => {
+                movies.map((movie,indx) => {
                     return(
-                        <MovieCard movie={movie}/>
+                        <MovieCard movie={movie} key={indx}/>
                     )
                 })
                 }

@@ -77,10 +77,10 @@ function MovieDetail() {
                 <h1 className="styled_heading">Cast</h1>
                 <div className="movie_cast">
                   {
-                    (movie?.credits?.cast)?.slice(0,8).map((c) => {
+                    (movie?.credits?.cast)?.slice(0,8).map((c, indx) => {
                       return (c.known_for_department==="Acting")&&
                       <>
-                        <div style={{maxWidth:"150px"}}>
+                        <div style={{maxWidth:"150px"}} key={`cast${indx}`}>
                           <img src={`${imgBaseSmall}${c.profile_path}`} />
                           <h4>{c.name}</h4>
                         </div>

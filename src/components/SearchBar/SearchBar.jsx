@@ -27,9 +27,9 @@ function SearchBar() {
 
     return (
         <div className="container">
-            <div class="centerbox">
+            <div className="centerbox">
                 {/* <form id="" className="" method="post" style={{position:"relative"}}> */}
-                    <div class="main-form-container">
+                    <div className="main-form-container">
                         <input type="text" className="main-input main-name" placeholder="Search by movie title"
                                 value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
                         {/* <div className="form-actions"> */}

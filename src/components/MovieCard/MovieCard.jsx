@@ -5,7 +5,7 @@ import './movie_card.scss'
 
 function MovieCard({movie}) {
     return (
-        <Link to={`/movie/${movie.id}`}>
+        <Link to={`/movie/${movie.id}`} key={`link${movie.id}`}>
             <div className="movie_card">
                 <div className="movie_thumbnail">
                     {(movie.poster_path) &&

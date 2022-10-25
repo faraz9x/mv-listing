@@ -37,7 +37,7 @@ function MovieBanner({movie, className}) {
                         </div>
                         <div className="banner_buttons">
                             {movie?.genres?.map((genre,indx) => {
-                            return  <span id={indx} className="genres_item">{genre?.name}</span>
+                            return  <span key={indx} className="genres_item">{genre?.name}</span>
                             })
                             }
 

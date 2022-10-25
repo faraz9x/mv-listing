@@ -4,7 +4,7 @@ import { getAsyncTrendingMovies, getTrendingFetchStatus, getTrendingMovies } fro
 import { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import './topSlider.scss'
+import './top_slider.scss'
 import Skeleton from '../LoadingSkeleton/Skeleton';
 import MovieBanner from '../MovieBanner/MovieBanner';
 

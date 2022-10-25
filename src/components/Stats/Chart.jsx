@@ -119,7 +119,7 @@ const Chart = ({chartData}) => {
         .text("Movies");
 	}
     return (
-            <div class='d3Container'>
+            <div className='d3Container'>
                 <svg ref={d3Chart}></svg>
             </div>
     )
